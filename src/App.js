@@ -28,10 +28,15 @@ function App() {
 
   function handleAddTodo(e) {
     const name = todoNameRef.current.value;
-    if (name === "") return;
+    if (name === "") {
+      alert("Please fill out empty task.");
+      return;
+    }
+
     setTodos((prevTodos) => {
       return [...prevTodos, { id: uuidv4(), name: name, complete: false }];
     });
+
     todoNameRef.current.value = null;
   }
 
@@ -45,7 +50,13 @@ function App() {
       <Header title="Task Tracker" />
       <div id="app-new-task-container">
         <div id="app-new-task">
-          <input ref={todoNameRef} type="text" id="app-input" />
+          <input
+            ref={todoNameRef}
+            placeholder="Enter task here.."
+            type="text"
+            id="app-input"
+          />
+          {/* <input type="text" placeholder="Your first name" />  */}
           <button
             onClick={handleAddTodo}
             id="app-add-button"
