@@ -1,6 +1,15 @@
 .todo-container {
   background-color: #3e4a61;
-  width: 60%;
+  width: 70%;
+  margin: 1% auto;
+  padding: 0.5%;
+  border-radius: 5px;
+}
+
+.todo-container-completed {
+  background-color: #9fd3c7;
+  color: #3e4a61;
+  width: 70%;
   margin: 1% auto;
   padding: 0.5%;
   border-radius: 5px;
