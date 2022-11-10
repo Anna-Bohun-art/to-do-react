@@ -5,7 +5,6 @@ import Header from "./components/Header";
 import { v4 as uuidv4 } from "uuid";
 
 const LOCAL_STORAGE_KEY = "todoApp.todos";
-console.log(LOCAL_STORAGE_KEY);
 function App() {
   const [todos, setTodos] = useState([]);
   const todoNameRef = useRef();
@@ -28,17 +27,24 @@ function App() {
 
   function handleAddTodo(e) {
     const name = todoNameRef.current.value;
-    if (name === "") {
-      alert("Please fill out empty task.");
-      return;
-    }
-
+    if (name === "") return;
     setTodos((prevTodos) => {
       return [...prevTodos, { id: uuidv4(), name: name, complete: false }];
     });
-
     todoNameRef.current.value = null;
   }
+
+  const handleKeyDown = event => {
+    console.log('User pressed: ', event.key);
+
+    // console.log(message);
+
+    if (event.key === 'Enter') {
+      handleAddTodo()
+      console.log('Enter key pressed ✅');
+    }
+  };
+
 
   function handleClearTodos() {
     const newTodos = todos.filter((todo) => !todo.complete);
@@ -50,13 +56,7 @@ function App() {
       <Header title="Task Tracker" />
       <div id="app-new-task-container">
         <div id="app-new-task">
-          <input
-            ref={todoNameRef}
-            placeholder="Enter task here.."
-            type="text"
-            id="app-input"
-          />
-          {/* <input type="text" placeholder="Your first name" />  */}
+        <input ref={todoNameRef} type="text" id="app-input" onKeyDown={handleKeyDown} />
           <button
             onClick={handleAddTodo}
             id="app-add-button"
