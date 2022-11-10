@@ -15,7 +15,7 @@ export default function Todo({ todo, toggleTodo }) {
           onChange={handleTodoClick}
           className="todo-checkbox"
         />
-        {todo.name}
+        <p className={`${todo.complete ? "completed" : ""}`}>{todo.name}</p>
       </label>
     </div>
   );

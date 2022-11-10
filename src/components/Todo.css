@@ -13,9 +13,9 @@
 }
 
 .todo-checkbox {
-  margin-right: 1%;
+  margin-right: 2%;
 }
 
-.todo-checkbox.complete {
-  color: red;
+.completed {
+  text-decoration: line-through;
 }
