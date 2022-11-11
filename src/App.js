@@ -27,24 +27,26 @@ function App() {
 
   function handleAddTodo(e) {
     const name = todoNameRef.current.value;
-    if (name === "") return;
+    if (name === "") {
+      alert("Please fill out empty task.");
+      return;
+    }
+
     setTodos((prevTodos) => {
       return [...prevTodos, { id: uuidv4(), name: name, complete: false }];
     });
-    todoNameRef.current.value = null;
   }
 
-  const handleKeyDown = event => {
-    console.log('User pressed: ', event.key);
+  const handleKeyDown = (event) => {
+    console.log("User pressed: ", event.key);
 
     // console.log(message);
 
-    if (event.key === 'Enter') {
-      handleAddTodo()
-      console.log('Enter key pressed ✅');
+    if (event.key === "Enter") {
+      handleAddTodo();
+      console.log("Enter key pressed ✅");
     }
   };
-
 
   function handleClearTodos() {
     const newTodos = todos.filter((todo) => !todo.complete);
@@ -56,7 +58,13 @@ function App() {
       <Header title="Task Tracker" />
       <div id="app-new-task-container">
         <div id="app-new-task">
-        <input ref={todoNameRef} type="text" id="app-input" onKeyDown={handleKeyDown} />
+          <input
+            ref={todoNameRef}
+            type="text"
+            id="app-input"
+            placeholder="Enter task here.."
+            onKeyDown={handleKeyDown}
+          />
           <button
             onClick={handleAddTodo}
             id="app-add-button"

@@ -8,7 +8,7 @@ export default function Todo({ todo, toggleTodo }) {
 
   return (
     <div
-      className={todo.complete ? "todo-container completed" : "todo-container"}
+      className={todo.complete ? "todo-container-completed" : "todo-container"}
     >
       <label className="todo-label">
         <input
