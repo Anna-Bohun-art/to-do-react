@@ -30,11 +30,12 @@ function App() {
     if (name === "") {
       alert("Please fill out empty task.");
       return;
+    } else {
+      setTodos((prevTodos) => {
+        return [...prevTodos, { id: uuidv4(), name: name, complete: false }];
+      });
+      todoNameRef.current.value = null;
     }
-
-    setTodos((prevTodos) => {
-      return [...prevTodos, { id: uuidv4(), name: name, complete: false }];
-    });
   }
 
   const handleKeyDown = (event) => {
