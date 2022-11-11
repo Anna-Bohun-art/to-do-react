@@ -1,3 +1,4 @@
+import { editableInputTypes } from "@testing-library/user-event/dist/utils";
 import React from "react";
 import "./Todo.css";
 
@@ -17,8 +18,10 @@ export default function Todo({ todo, toggleTodo }) {
           onChange={handleTodoClick}
           className="todo-checkbox"
         />
-        <p className={`${todo.complete ? "completed" : ""}`}>{todo.name}</p>
       </label>
+      <div className="text">
+      <p   className={`${todo.complete ? "completed" : ""}`}  contentEditable>{todo.name} </p>
+      </div>
     </div>
   );
 }
